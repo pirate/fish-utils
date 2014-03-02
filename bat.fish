@@ -1,0 +1,3 @@
+function bat
+	battery
+end

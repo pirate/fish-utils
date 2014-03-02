@@ -1,0 +1,3 @@
+function cl
+	clear
+end
