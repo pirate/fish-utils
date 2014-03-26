@@ -1,3 +1,3 @@
 function apus
-	git push --force
+	git push $argv
 end

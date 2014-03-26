@@ -1,3 +1,0 @@
-function cl
-	clear
-end

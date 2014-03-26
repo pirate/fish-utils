@@ -1,3 +1,3 @@
 function gadd
-	git add $argv
+	git add --all $argv
 end
