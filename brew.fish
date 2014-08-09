@@ -1,3 +1,3 @@
 function brew
-	sudo brew $argv
+	sudo (which brew) "$argv"
 end

@@ -1,3 +1,3 @@
 function psaux
-	sudo ps aux | grep $argv
+	ps aux | grep -v grep | grep "$argv"
 end

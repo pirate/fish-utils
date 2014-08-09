@@ -1,7 +1,7 @@
 function p
-	if test $argv
-    python $argv
-else
-    ipython
-end
+	if test (count $argv) -gt 0
+        python $argv
+    else
+        bpython
+    end
 end

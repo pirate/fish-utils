@@ -1,5 +1,6 @@
 function socks
-	set port 1080
-echo "[+] Starting socks proxy on port $port."
-ssh -v -N -n -g -D 1080 nick@nicksweeting.com; and echo "[+] Socks proxy exited."
+	sudo networksetup -setsocksfirewallproxystate Wi-Fi on
+    set port 1080
+    echo "[+] Starting socks proxy on port $port."
+    ssh -v -N -n -g -D 1080 nick@nicksweeting.com; and echo "[+] Socks proxy exited."
 end

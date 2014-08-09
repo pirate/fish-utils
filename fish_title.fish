@@ -1,5 +1,5 @@
 function fish_title
-	echo '@' $SSHHOST ' '
-echo $_ ' '
+	echo $_ ' '
+echo '@' $SSHHOST ' '
 pwd
 end
