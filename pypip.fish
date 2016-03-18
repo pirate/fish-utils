@@ -1,3 +1,3 @@
 function pypip
-	/usr/local/share/pypy/pip $argv
+	sudo /usr/local/share/pypy/pip $argv
 end

@@ -1,3 +1,3 @@
 function psax
-	ps ax | grep -v grep | grep "$argv"
+	ps ax -o pid,command | grep -v grep | grep -i "$argv"
 end

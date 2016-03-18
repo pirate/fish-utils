@@ -10,7 +10,7 @@ function service --description 'Run command using sudo (use !! for last command)
     
 
     if test (count $argv) -gt 0
-        grep "$argv[1]" ~/.services
+        grep -i "$argv[1]" ~/.services | cgrep "$argv[1]"
     else
         grep -v "/System/Library" ~/.services
     end
