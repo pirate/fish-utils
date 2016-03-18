@@ -1,3 +1,3 @@
 function n
-	nano $argv
+	/usr/local/bin/nano $argv
 end

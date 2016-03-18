@@ -1,4 +1,4 @@
 function php.stop
-    launchctl unload /Users/nick/Library/LaunchAgents/homebrew.mxcl.php55.plist
+    quiet launchctl unload /Users/nick/Library/LaunchAgents/*.php*.plist
 	k --all php-fpm
 end

@@ -1,3 +1,3 @@
 function psaux
-	ps aux | grep -v grep | grep -i "$argv"
+	ps aux | grep -v grep | cgrep -i "$argv"
 end

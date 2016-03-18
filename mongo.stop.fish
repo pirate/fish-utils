@@ -1,3 +1,3 @@
 function mongo.stop
-	k "mongod --config /usr/local/etc/mongod.conf"
+	k --all "mongod --config /usr/local/etc/mongod.conf"
 end

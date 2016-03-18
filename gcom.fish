@@ -1,3 +1,3 @@
 function gcom
-	git commit -m "$argv"
+	git commit --allow-empty -m "$argv"
 end

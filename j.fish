@@ -1,16 +1,18 @@
 function j
-	switch "$argv"
+    switch "$argv"
         case '-*' '--*'
             autojump $argv
         case '*'
-            set -l new_path (autojump $argv)
-            if test -d "$new_path"
+            set -l output (autojump $argv)
+            if test -d "$output"
                 set_color red
-                echo $new_path
+                echo $output
                 set_color normal
-                cd $new_path
+                cd $output
             else
-                __aj_not_found $argv
+                __aj_err "autojump: directory '"$argv"' not found"
+                __aj_err "\n$output\n"
+                __aj_err "Try `autojump --help` for more information."
             end
     end
 end

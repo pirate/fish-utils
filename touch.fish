@@ -1,3 +1,3 @@
 function touch
-	command touch $argv; and subl $argv
+	/usr/bin/touch $argv; and subl $argv
 end

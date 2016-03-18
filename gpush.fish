@@ -1,3 +1,3 @@
 function gpush
-	git push origin $argv
+	git push --set-upstream origin (_git_branch_name) $argv
 end

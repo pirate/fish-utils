@@ -1,7 +1,19 @@
 function manage
-    set -l manage_location 'manage.py'
-    while not test -f $manage_location
-	    set manage_location "../"$manage_location
-    end
-    python $manage_location $argv
+    set -g DJANGO_ROOT './'
+    if test -f $DJANGO_ROOT"manage.py"
+        if test -e $DJANGO_ROOT".venv"
+            set -g VENV (cat $DJANGO_ROOT".venv")
+            vf activate $VENV
+        end
+        python $DJANGO_ROOT"manage.py" $argv
+    else
+        while not test -f $DJANGO_ROOT"manage.py"
+    	    set DJANGO_ROOT $DJANGO_ROOT"../"
+        end
+        if test -e $DJANGO_ROOT".venv"
+            set -g VENV (cat $DJANGO_ROOT".venv")
+            vf activate $VENV
+        end
+        python $DJANGO_ROOT"manage.py" $argv
+    end    
 end

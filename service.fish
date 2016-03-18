@@ -1,7 +1,7 @@
 function service --description 'Run command using sudo (use !! for last command)'
 	ls /Users/nick/Library/LaunchAgents/*.plist > ~/.services
     ls /Library/LaunchAgents/*.plist >> ~/.services
-    ls -R /Library/StartupItems | grep *.plist >> ~/.services
+    ls -R /Library/StartupItems | grep "*.plist" >> ~/.services
     ls /Library/LaunchDaemons/*.plist >> ~/.services
     ls /System/Library/LaunchAgents/*.plist >> ~/.services
     ls /System/Library/LaunchDaemons/*.plist >> ~/.services

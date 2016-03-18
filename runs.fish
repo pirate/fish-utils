@@ -1,4 +1,12 @@
 function runs
-	fork "sleep 5; open http://drchrono.l"
-    manage runserver_plus 0.0.0.0:8000 $argv
+	mysql.start
+    redis.start
+    dns.start
+    nginx.start
+    celery.start
+    while true
+        django.start $argv
+        echo "Restarting django in 2sec..."
+        sleep 2
+    end
 end

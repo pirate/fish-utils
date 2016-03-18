@@ -1,3 +1,3 @@
 function cgrep
-	grep -i --color=auto $argv
+	grep --color=auto -i $argv
 end

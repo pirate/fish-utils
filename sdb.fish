@@ -1,4 +1,4 @@
 function sdb
 	manage syncdb
-manage migrate
+    manage migrate
 end

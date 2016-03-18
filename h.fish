@@ -1,3 +1,3 @@
 function h
-	htop
+	s htop
 end

@@ -1,4 +1,4 @@
 function squid.stop
-	launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.squid.plist
-k squid
+	quiet launchctl unload ~/Library/LaunchAgents/*.squid.plist
+    k squid
 end

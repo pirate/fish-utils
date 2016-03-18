@@ -1,4 +1,4 @@
-function redd --description 'description'
+function 🎾 --description 'description'
     switch (count $argv)
     case '1'
         switch $argv[1]

@@ -1,3 +1,4 @@
 function f
-	find . -name "$argv"
+	# find . -name "$argv"
+    cd ~/focsui/
 end
