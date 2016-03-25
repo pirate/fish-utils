@@ -6,7 +6,10 @@ function gb
         # makr current branch in red
         git branch -v | \
             regex 's/^(\*?\s+.+?\s+)(\w+)(.*)$/'$blue' $1'$white' ['$green'$2'$white'] $3'$normal'/gm' | \
-            regex 's/(\[ahead \w\])/'$yellow'$1'$normal'/gm' | \
+            regex 's/(\[FOCS-\w+\])/'$black'$1'$normal'/gm' | \
+            regex 's/(\[ahead \w+\])/'$green'$1'$normal'/gm' | \
+            regex 's/(\[behind \w+\])/'$yellow'$1'$normal'/gm' | \
+            regex 's/(\[ahead \w+, behind \w+\])/'$red'$1'$normal'/gm' | \
             regex 's/\* (\w+)/'$red'> $1/gm'
     case '*'
         git branch $argv
