@@ -1,0 +1,5 @@
+#!/bin/bash
+/usr/local/bin/fish -c "$*" > ~/tmp/fish_forks/last.log 2>&1 &
+pid=$!
+mv ~/tmp/fish_forks/last.log ~/tmp/fish_forks/$pid.log
+disown $pid
