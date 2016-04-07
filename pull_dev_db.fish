@@ -26,6 +26,7 @@ function pull_dev_db --description 'Overwrite local postgres db with updated cop
 
     echo "[3/6] Importing downloaded db into `$TEMP_DB_NAME`"
         psql $TEMP_DB_NAME < $DOWNLOAD_LOCATION
+        and command rm $DOWNLOAD_LOCATION
 
     echo "[4/6] Disconnecting db sessions to perform `$LOCAL_DB_NAME` db move"
         psql postgres -c "SELECT pg_terminate_backend(pid) from pg_stat_activity where datname = '$LOCAL_DB_NAME'"
