@@ -1,5 +1,6 @@
 function watchify.start
     echo "Starting Watchify..."
+    g
     psax watchify | grep -v "fish -c"; and return
-    watchify src/main/FlightBuilder/main.js -o static/src/main/FlightBuilder/main.js
+    watchify src/home.js -o static/src/home.js
 end

@@ -1,3 +1,3 @@
 function gpullr
-	pullr $argv
+	hub compare $argv
 end

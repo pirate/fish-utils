@@ -1,3 +1,3 @@
 function g
-	git $argv
+	cd ~/Code/grater-project/grater-django
 end

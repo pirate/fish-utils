@@ -7,6 +7,6 @@ function gdel
     if test $branch = (_git_branch_name)
         git checkout dev
     end
-	g branch -D $branch
+	git branch -D $branch
 end
 autocomplete "gdel" "(git branch -q | regex 's/ |\* //g')" "Branch"
