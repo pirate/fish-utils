@@ -1,3 +1,3 @@
-function grst --description 'git reset HEAD'
+function grs --description 'git reset HEAD'
     git reset HEAD
 end

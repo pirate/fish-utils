@@ -1,3 +1,3 @@
 function regex
-	perl -pe $argv
+	perl -pe "$argv"
 end
