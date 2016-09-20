@@ -48,7 +48,7 @@ function fish_prompt
     end
 
     if set -q VIRTUAL_ENV
-        set venv $blue"("$red(basename "$VIRTUAL_ENV")$blue")"
+        set venv $blue"["$red(basename "$VIRTUAL_ENV")$blue"]"
     end
 
     /usr/bin/touch ~/.stats/commands.csv

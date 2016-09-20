@@ -10,7 +10,7 @@ function gb
             regex 's/(\[ahead \w+\])/'$green'$1'$normal'/gm' | \
             regex 's/(\[behind \w+\])/'$yellow'$1'$normal'/gm' | \
             regex 's/(\[ahead \w+, behind \w+\])/'$red'$1'$normal'/gm' | \
-            regex 's/\* (\w+)/'$red'> $1/gm'
+            regex 's/\* (\w+)/'$red'⎇ $1/gm'
     case '*'
         git branch $argv
     end
