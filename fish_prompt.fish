@@ -69,5 +69,5 @@ function fish_prompt
         echo "["$statusstr"]"
     end
 
-    echo -n -s $red$arrow $cyan$current_dir $yellow" py:"$venv $blue" ⎇ "$git_info $purple$git_dirty $normal " "
+    echo -n -s $red$arrow $cyan$current_dir $yellow" py"$venv $blue" ⎇ "$git_info $purple$git_dirty $normal " "
 end
