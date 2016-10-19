@@ -13,9 +13,10 @@ function deploy --description 'Deploy current branch to the grater server'
                 git checkout -f live -q; \
                 pip install -q -r requirements.txt"
 
-    echo $purple"[*] Clearing"$normal" Redis, restarting Runserver..."
+    echo $purple"[*] Migrating DB, restarting Runserver..."$normal
     ssh blitzka "killall python; \
               cd grater-django/;
+              faketty ./manage.py migrate;
               nohup ./manage.py runserver > /var/log/grater.log 2>&1 & \
               service nginx reload;"
 
