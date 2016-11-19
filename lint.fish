@@ -1,5 +1,4 @@
 function lint
-	cd ~/mavrx/FOCS
-    make lint | grep -v node_modules
-    cd ~/mavrx/FOCS/focsui
+	g
+    flake8 | pygmentize -l python
 end
