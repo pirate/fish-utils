@@ -1,9 +1,8 @@
 function socks
-    quiet tcping -t 2 nicksweeting.com 80
-    and echo "[√] Able to reach nicksweeting.com:80"
+    tcping -t 2 nicksweeting.com 44
+    and echo "[√] Able to reach nicksweeting.com:44"
     or begin
-        echo "[X] Unable to reach nicksweeting.com:80"
-        tcping -t 2 nicksweeting.com 80
+        echo "[X] Unable to reach nicksweeting.com:44"
         return
     end
 
