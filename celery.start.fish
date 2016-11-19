@@ -1,8 +1,7 @@
 function celery.start
     echo "Starting Celery..."
     psax "celery" | grep -v 'fish -c'; and return
-    fork "cd ~/mavrx/FOCS; vf activate focs3; make celery"
-    # fork "manage celery worker --loglevel=INFO --concurrency=1 --purge --queues celery,bulk,fast"
+    fork "g; vf activate grater; celery -A grater worker -l info"
     sleep 1
     psax "celery" | grep -v 'fish -c'
 end
