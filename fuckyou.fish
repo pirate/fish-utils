@@ -1,3 +1,3 @@
 function fuckyou --description 'sudo rm -Rf'
-    sudo /bin/rm -Rf "$argv"
+    sudo /bin/rm -Rf $argv
 end
