@@ -6,26 +6,26 @@ function k --description "Systematic genocide of unwanted processes."
     if echo "$argv" | grep -q '\-\-all'
         set query (echo "$query" | perl -p -e 's/--all//g' | xargs)
     end
-    
+
     # First try quietly killing by exact PID or process name
     # awk is to exctract only PID from first column of `ps aux` output
     quiet sudo kill (echo "$query" | awk '{print $1}'); and echo "Killed PID $query";     and return
     quiet sudo killall "$query";                        and echo "Killed Process $query"; and return
-    
+
     # if no exact match is killable, filter process list `ps ax` down to a few results using the given term
     set -l proc (psax "$query")
 
     # while list of processes != 1
     while test (count $proc) -ne 1
         # if no results, exit immediately
-        test (count $proc) = 0; and echo "No processes found."; and return
+        test (count $proc) = 0; and echo "No processes found."; and return 1
 
         if echo "$argv" | grep -q '\-\-all'
             # if --all was passed to the command, kill all processes in the list
             set query 'all'
         else
             # ask if they want to filter further, or kill all processes that matched their search
-            echo "Multiple processes found."
+            echo "Multiple processes found:"
             # list the results, with their search term highlighted in color
             for i in $proc; echo "$i" | regex 's/(\s*)(\d+)\s+(.+$)/$1'"$white"'$2'"$normal"' $3/'| cgrep "$query"; end
             read -p 'echo $white"PID"$normal", "$yellow"keyword"$normal", or "$red"all"$normal": "' query
