@@ -1,6 +1,7 @@
 function service --description 'Manage startup items on mac, emulates ubuntu service command'
 	set tmpfile ~/tmp/services.txt
 
+    # collect all services into a list
     quiet mkdir -p ~/tmp/
     set -u CLICOLOR_FORCE
     command ls /Users/nick/Library/LaunchAgents/*.plist > $tmpfile
@@ -14,8 +15,10 @@ function service --description 'Manage startup items on mac, emulates ubuntu ser
 
     switch (count $argv)
         case 0
+            # if no args, just list all available services
             cat $tmpfile
         case 1
+            # if one arg, show any service names that contain that str
             set service (grep -i "$argv[1]" < $tmpfile)
             if test "$service"
                 grep -i "$argv[1]" < $tmpfile | cgrep "$argv[1]"
@@ -25,6 +28,7 @@ function service --description 'Manage startup items on mac, emulates ubuntu ser
                 return 1
             end
         case 2
+            # if service and command, perform given command on matching services
             set service (grep -i "$argv[1]" < $tmpfile)
             set query "$argv[1]"
             set action "$argv[2]"
@@ -74,7 +78,6 @@ function service --description 'Manage startup items on mac, emulates ubuntu ser
                     end
                     sleep 1
                     psaux "$argv[1]"
-
                 case 'stop'
                     echo $red"[X] Unloading and killing $service..."$normal >&2
                     quiet launchctl unload "$service"
@@ -92,10 +95,10 @@ function service --description 'Manage startup items on mac, emulates ubuntu ser
                 case 'delete'
                     echo $red"[X] Deleting $service..."$normal >&2
                     launchctl -w unload "$service"
-                    or sudo launchctl -w unload "$service"
+                    or sudo launchctl unload "$service"
                     sleep 1
                     k "$service"
-                    mv "$service" ~/.Trash/"$service"
+                    mv "$service" ~/.Trash/
 
                 case 'status'
                     echo $cyan"[i] Status $service..."$normal >&2
