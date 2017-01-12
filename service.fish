@@ -94,11 +94,11 @@ function service --description 'Manage startup items on mac, emulates ubuntu ser
 
                 case 'delete'
                     echo $red"[X] Deleting $service..."$normal >&2
-                    launchctl -w unload "$service"
+                    launchctl unload "$service"
                     or sudo launchctl unload "$service"
                     sleep 1
                     k "$service"
-                    mv "$service" ~/.Trash/
+                    sudo mv "$service" ~/.Trash/
 
                 case 'status'
                     echo $cyan"[i] Status $service..."$normal >&2

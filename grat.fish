@@ -3,7 +3,7 @@ function grat
     redis.start
     postgresql.start
     nginx.start
-    celery.start
+    # celery.start
     echo "Remember to start watchify if you want JS compiling"
     runs
 end
