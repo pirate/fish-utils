@@ -29,14 +29,14 @@ function fish_prompt
     set -l last \"$history[1]\"
     set -l timestamp (date +"%Y-%m-%d_%H")
 
-    set -l time_taken (echo "$taken" | ggrep -oP '(^|\s)\K\d+(?=(\.\d+s$)|s$)')
-
-    if begin; test "$taken" = ""; or test "$time_taken" -lt 3; end
+    # show time taken if more than 3000ms
+    if [ $taken -lt 3000 ]
         set taken "0"
     else
-        set taken $CMD_DURATION
+        set taken (math "$taken/1000")
     end
 
+    # show color coded git branch and dirty status
     set -l git_branch (_git_branch_name)
     if [ $git_branch ]
         set branch_color (_branch_color $git_branch)
@@ -47,27 +47,33 @@ function fish_prompt
         end
     end
 
+    # show python virtualenv
     if set -q VIRTUAL_ENV
         set venv $blue"["$red(basename "$VIRTUAL_ENV")$blue"]"
+        # set venv $yellow(basename "$VIRTUAL_ENV")
     end
 
+    # log last command to stats file
     /usr/bin/touch ~/.stats/commands.csv
     echo "$last_status,$taken,$timestamp,'"$currdir"','"$last"'" >> ~/.stats/commands.csv
 
-    if test "$taken" != "0"
-        set statusstr $yellow$taken$normal
+
+    # assemble status strings
+    if [ "$taken" != "0" ]
+        set statusstr $yellow$taken"s"$normal
     end
 
-    if test "$last_status" != "0" -a "$last_status" != "127"
-        if test "$taken" != "0"
+    if [ "$last_status" != "0" -a "$last_status" != "127" ]
+        if [ "$taken" != "0" ]
             set statusstr ":"$statusstr
         end
         set statusstr $red$last_status$normal$statusstr
     end
 
-    if test -n "$statusstr"
+    if [ "$statusstr" ]
         echo "["$statusstr"]"
     end
 
+    # print console line
     echo -n -s $red$arrow $cyan$current_dir $yellow" py"$venv $blue" ⎇ "$git_info $purple$git_dirty $normal " "
 end

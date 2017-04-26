@@ -1,3 +1,3 @@
 function gclone
-	git clone $argv
+	git clone --recursive $argv
 end
