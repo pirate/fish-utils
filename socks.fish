@@ -13,9 +13,9 @@ function socks
     echo "[+] Starting socks proxy on port 1080."
     switch (count $argv)
     case '1'
-        ssh -N -n -g -D 1080 nick@$argv
+        ssh -N -n -g -D 1080 squash@$argv
     case 0
-        ssh -N -n -g -D 1080 nick@nicksweeting.com
+        ssh -N -n -g -D 1080 nicksweeting.com
     case '*'
         ssh -N -n -g -D 1080 $argv
     end

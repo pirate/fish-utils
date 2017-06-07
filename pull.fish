@@ -1,7 +1,11 @@
 function pull --description 'Pull specified file from nicksweeting.com to specified path on local (or ~/Desktop/pull by default)'
 	if test (count $argv) -gt 1
-        scp -r -P 44 root@162.243.151.39:$argv[1] $argv[2]; and subl $argv[2]
+        set src "$argv[1]"
+        set dst "$argv[2]"
+
     else
-        scp -r -P 44 root@162.243.151.39:$argv[1] /Users/nick/Desktop/pull; and subl /Users/nick/Desktop/pull
+        set src "$argv[1]"
+        set dst "/Users/squash/Desktop/"(basename "$src")
     end
+    scp -r root@nicksweeting.com:"$src" "$dst"; and subl "$dst"
 end
