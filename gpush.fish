@@ -4,4 +4,5 @@ function gpush
     regex 's/Branch .+ set up to track remote branch .*//g' | \
     regex 's/\.\./'$green'..'$normal'/g' | \
     regex 's/-\>/'$green'->'$normal'/g'
+    blink 1
 end
