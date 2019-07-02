@@ -1,4 +1,5 @@
 function ssh
 	set -x SSH_HOST "SSH"
-    command ssh $argv
+    echo -ne "\033]0;$argv[1]\007"
+    command ssh -t $argv
 end

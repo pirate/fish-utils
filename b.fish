@@ -1,3 +1,3 @@
 function b
-	brew $argv
+	blitzka $argv
 end

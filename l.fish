@@ -1,4 +1,3 @@
 function l
-	ls $argv
-    # todo: exclude .pyc .DS_store
+	command ls -CGF -a $argv
 end

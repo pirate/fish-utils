@@ -32,7 +32,7 @@ function k --description "Systematic genocide of unwanted processes."
         end
 
         if test "$query" = "all"
-             # if they wanted to kill everything in the list, iterate through it killing each process
+            # if they wanted to kill everything in the list, iterate through it killing each process
             for i in $proc; k (echo "$i" | awk '{print $1}'); end; return
         else
             # otherwise if they wanted to filter further, set proc to the new filtered results and continue looping
@@ -47,6 +47,6 @@ function k --description "Systematic genocide of unwanted processes."
 
     # confirm that they want to kill the process, try SIGTERM, then SIGKILL
     set yn (echo \[(tput setaf 1)y(tput sgr0)/(tput setaf 4)n(tput sgr0)\]:)
-    read_confirm "Kill? $yn";    or return; and sudo kill    $proc; and echo "[$white√$normal] SIGTERM'ed $proc";    and return
+    read_confirm "Kill? $yn";    or return; and sudo kill    $proc; and echo "[$white√$normal] SIGTERM'ed $proc"; and return
     read_confirm "Kill -9? $yn"; or return; and sudo kill -9 $proc; and echo "[$yellow√$normal] SIGKILL'ed $proc"; and return
 end

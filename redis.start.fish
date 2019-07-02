@@ -1,7 +1,7 @@
 function redis.start
     echo $green"[+] Starting Redis..."$normal
 	psax redis-server | grep -v "fish -c"; and return;
-    fork "/usr/local/opt/redis/bin/redis-server /usr/local/etc/redis.conf"
+    fork "/usr/local/opt/redis/bin/redis-server /usr/local/etc/redis.conf --unixsocket /tmp/redis.sock"
     sleep 1
     psax redis-server | grep -v "fish -c"
 end

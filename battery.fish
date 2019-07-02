@@ -1,3 +1,3 @@
 function battery
-	python ~/bin/battery.py 
+	~/bin/battery.py 
 end

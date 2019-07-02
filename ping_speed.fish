@@ -10,5 +10,5 @@ function ping_speed --description 'description'
         set server $argv[1]
     end
     set -l result (ping -c $count -t 2 $server | tail -1 | regex 's/^(.* = \d*\.\d*\/)(\d*)(.\d*\/.*)$/$2 ms/gm')
-    echo "$result" | cgrep --color=always -o '100.0% packet loss'; or echo "$result"
+    echo "$result" | cgrep --color=always -o '100.0% packet loss'; or echo "$result" | regex 's/(\d+) ms/$1ms/gm'
 end

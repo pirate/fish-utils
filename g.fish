@@ -1,3 +1,4 @@
 function g
-	cd ~/Code/grater-project/grater-django
+	cd /opt/blitzka/grater-django
+    source .venv/bin/activate.fish
 end

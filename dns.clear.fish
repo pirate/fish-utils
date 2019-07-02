@@ -1,4 +1,5 @@
 function dns.clear
-	sudo dscacheutil -flushcache
-sudo killall -HUP mDNSResponder
+    sudo arp -a -d
+    sudo killall -HUP mDNSResponder
+    osascript /Users/squash/bin/chrome-dns-clear.applescript
 end

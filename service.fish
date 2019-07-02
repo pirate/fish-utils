@@ -1,22 +1,26 @@
 function service --description 'Manage startup items on mac, emulates ubuntu service command'
-	set tmpfile ~/tmp/services.txt
+    quiet mkdir -p ~/tmp/
+    set tmpfile ~/tmp/services.txt
+    echo -n "" > "$tmpfile"
 
     # collect all services into a list
-    quiet mkdir -p ~/tmp/
-    set -u CLICOLOR_FORCE
-    command ls /Users/nick/Library/LaunchAgents/*.plist > $tmpfile
-    command ls /Library/LaunchAgents/*.plist >> $tmpfile
-    command ls -R /Library/StartupItems | grep "*.plist" >> $tmpfile
-    command ls /Library/LaunchDaemons/*.plist >> $tmpfile
-    # command ls /System/Library/LaunchAgents/*.plist >> $tmpfile
-    # command ls /System/Library/LaunchDaemons/*.plist >> $tmpfile
-    find /Library/StartupItems -iwholename "*.plist" >> $tmpfile
-    loginitems >> $tmpfile
+    set -a -l services /Users/squash/Library/LaunchAgents/*.plis
+    set -a -l services /Library/LaunchAgents/*.plist
+    set -a -l services /Library/StartupItems/**/*.plist
+    set -a -l services /Library/LaunchDaemons/*.plist
+    set -a -l services /System/Library/LaunchAgents/*.plist
+    set -a -l services /System/Library/LaunchDaemons/*.plist
+    set -a -l services (loginitems)
+    for service in $services
+        echo "$service" >> "$tmpfile"
+    end
+
 
     switch (count $argv)
         case 0
             # if no args, just list all available services
-            cat $tmpfile
+            cat "$tmpfile"
+            return 0
         case 1
             # if one arg, show any service names that contain that str
             set service (grep -i "$argv[1]" < $tmpfile)
