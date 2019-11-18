@@ -4,6 +4,7 @@ This repo contains a (rarely updated) collection of my custom fish helper funcs 
 
 ## Resources
 
+ - Comparison of all the UNXI shells                                      http://hyperpolyglot.org/unix-shells
  - Defensive Bash Programming                                             https://archive.sweeting.me/archive/1404986059.18/www.kfirlavi.com/blog/2012/11/14/defensive-bash-programming/index.html
  - anordal/shellharden                                                    https://github.com/anordal/shellharden/blob/master/how_to_do_things_safely_in_bash.md
  - Ten Things I Wish I’d Known About bash                                 https://zwischenzugs.com/2018/01/06/ten-things-i-wish-id-known-about-bash
