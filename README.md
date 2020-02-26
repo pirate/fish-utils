@@ -23,6 +23,7 @@ This repo contains a (rarely updated) collection of my custom fish helper funcs 
  - Rich’s sh (POSIX shell) tricks                                         http://www.etalabs.net/sh_tricks.html
  - Testing Bash scripts with BATS                                         https://opensource.com/article/19/2/testing-bash-bats
  - Testing Bash scripts with Critic.sh                                    https://github.com/Checksum/critic.sh
+ - Useful BASH and UNIX commands                                          https://cb.vu/unixtoolbox.xhtml
 
 If any of the links are dead, you can find an archived version on https://archive.sweeting.me
 
