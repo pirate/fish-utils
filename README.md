@@ -26,6 +26,7 @@ This repo contains a (rarely updated) collection of my custom fish helper funcs 
  - Testing Bash scripts with Critic.sh                                    https://github.com/Checksum/critic.sh
  - Useful BASH and UNIX commands                                          https://cb.vu/unixtoolbox.xhtml
  - When Bash Scripts Bite :: Jane Street Tech Blogs                       https://blogs.janestreet.com/when-bash-scripts-bite/
+ - Bashible: Ansible-like framework for bash-based devops                 https://github.com/mig1984/bashible
 
 
 If any of the links are dead, you can find an archived version on https://archive.sweeting.me
