@@ -27,6 +27,7 @@ This repo contains a (rarely updated) collection of my custom fish helper funcs 
  - Useful BASH and UNIX commands                                          https://cb.vu/unixtoolbox.xhtml
  - When Bash Scripts Bite :: Jane Street Tech Blogs                       https://blogs.janestreet.com/when-bash-scripts-bite/
  - Bashible: Ansible-like framework for bash-based devops                 https://github.com/mig1984/bashible
+ - Auto-parse help text from comment at the top of script                 https://samizdat.dev/help-message-for-shell-scripts/
 
 
 If any of the links are dead, you can find an archived version on https://archive.sweeting.me
