@@ -12,7 +12,8 @@ This repo contains a (rarely updated) collection of my custom fish helper funcs 
  - BashPitfalls : Greg's Wiki                                             http://mywiki.wooledge.org/BashPitfalls
  - Common shell script mistakes                                           http://www.pixelbeat.org/programming/shell_script_mistakes.html
  - Comparison of all the UNIX shells                                      http://hyperpolyglot.org/unix-shells
- - Defensive Bash Programming                                             https://archive.sweeting.me/archive/1404986059.18/www.kfirlavi.com/blog/2012/11/14/defensive-bash-programming/index.html
+ - Defensive Bash Programming                                             https://www.kfirlavi.com/blog/2012/11/14/defensive-bash-programming/index.html or https://jonlabelle.com/snippets/view/markdown/defensive-bash-programming
+ - Bash FAQ and Cookbook                                                  https://mywiki.wooledge.org/BashFAQ
  - Detecting the use of "curl | bash" server side                         https://idontplaydarts.com/2016/04/detecting-curl-pipe-bash-server-side
  - Gensokyo Blog - Use Bash Builtins shell,fish,bash                      https://blog.gensokyo.io/a/fafbe742.html
  - Rich’s sh (POSIX shell) tricks                                         http://www.etalabs.net/sh_tricks.html
@@ -28,7 +29,8 @@ This repo contains a (rarely updated) collection of my custom fish helper funcs 
  - When Bash Scripts Bite :: Jane Street Tech Blogs                       https://blogs.janestreet.com/when-bash-scripts-bite/
  - Bashible: Ansible-like framework for bash-based devops                 https://github.com/mig1984/bashible
  - Auto-parse help text from comment at the top of script                 https://samizdat.dev/help-message-for-shell-scripts/
-
+ - Make bash scripts safer by writing them in Rust                        https://github.com/rust-shell-script/rust_cmd_lib
+ - Additional shell options for non-trivial bash scripts                  https://saveriomiroddi.github.io/Additional-shell-options-for-non-trivial-bash-shell-scripts/
 
 If any of the links are dead, you can find an archived version on https://archive.sweeting.me
 
