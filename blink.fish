@@ -1,4 +1,5 @@
 function blink --description 'Flash the keyboard [1] times with a [0.15]s delay'
+    return 0
     set pre (/Users/squash/Documents/Code/mac-keyboard-brightness/kbrightness)
     set times 1
     set duration 0.15

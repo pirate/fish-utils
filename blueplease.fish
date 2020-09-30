@@ -1,8 +1,4 @@
 function blueplease --description 'Bluetooth please stop stuttering for fucks sake.'
-    sudo killall blued
-    sudo renice -5 (pid blued)
-    sudo renice -5 (pid bluetoothaudio)
-    sudo renice -5 (pid iTunes)
     defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 80
     defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" 80
     defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool (editable)" 80
@@ -10,7 +6,12 @@ function blueplease --description 'Bluetooth please stop stuttering for fucks sa
     defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" 80
     defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" 80
     defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
-    sudo killall coreaudiod
-    sleep 2
+    k --all bluetoothd
+    k --all bluetoothaudiod
+    k --all coreaudio
+    sleep 3
+    sudo renice -5 (pid bluetoothd)
+    sudo renice -5 (pid bluetoothaudiod)
+    sudo renice -5 (pid Music)
     sudo renice -5 (pid coreaudiod)
 end
