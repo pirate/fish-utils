@@ -81,8 +81,8 @@ function atomicwrite --description 'Write a [string] to a [file] atomically (ove
         set tmpfile "$tmpdir/$dstname"
         set trashfile "$trashdir/$dstname"
     else
-        set tmpuuid (uuidgen | cut -d '-' -f1)
-        set trashuuid (uuidgen | cut -d '-' -f1)
+        set tmpuuid (date "+%s").(uuidgen | cut -d '-' -f1)
+        set trashuuid (date "+%s").(uuidgen | cut -d '-' -f1)
         set tmpfile "$tmpdir/$dstname.$tmpuuid"
         set trashfile "$trashdir/$dstname.$trashuuid"
     end
@@ -114,7 +114,7 @@ function atomicwrite --description 'Write a [string] to a [file] atomically (ove
     if not test -n "$_flag_notrash"
         # back up existing file/dir at destination to trash
         
-        and cp -p -R -f "$dstpath" "$trashfile"
+        cp -p -R -f "$dstpath" "$trashfile"
         or begin
             echo $red"Failed to copy existing destination file '$dstpath' to trash '$trashfile'."$normal
             return 1
