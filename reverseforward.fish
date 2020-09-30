@@ -12,7 +12,7 @@ function reverseforward --description 'Use autossh to persistently forward a rem
     case '1'
         set localport "$argv"
         set remoteport 6$localport
-    case 0
+    case '0'
         set localport 22
         set remoteport 666
     case '*'
@@ -26,7 +26,7 @@ function reverseforward --description 'Use autossh to persistently forward a rem
         return 1
     end
 
-    quiet "k --all autossh $remoteport"
+    quiet k --all autossh $remoteport
 
     echo "[*] Opening autossh tunnel $host:$remoteport -> localhost:$localport..."
     fork "autossh -M 10984 -R $remoteport:localhost:$localport $host -Nv"

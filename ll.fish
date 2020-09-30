@@ -10,5 +10,26 @@ function ll
  #    regex 's/SIZE:(\d|.+):SIZEB:(M):ENDSIZEB/'$yellow'$1 $2/g' | \
  #    regex 's/SIZE:(\d|.+):SIZEB:(G):ENDSIZEB/'$red'$1 $2/g'
     ##         perms  @  mode   user  group size sizeb date  name
-    exa --group-directories-first -lagF --git --time-style=long-iso $argv
+    if isatty stdout
+        echo $yellow\> $blue$PWD$normal
+        echo
+        exa \
+            --group-directories-first \
+            --time-style=long-iso \
+            --group \
+            --modified \
+            --icons \
+            # --created \
+            # --header \
+            # --extended \
+            --long \
+            --git \
+            --classify \
+            --all \
+            --ignore-glob=.DS_Store \
+            -s name \
+            $argv
+    else
+        /bin/ls -l
+    end
 end

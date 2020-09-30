@@ -22,9 +22,15 @@ function _venv_status
     set fgcolor (set_color 'ffa632')
     set symbol "⨈"
 
-    if [ "$ACTIVE_PY_ENV" ]
-        set name (basename -- "$ACTIVE_PY_ENV")
+    set name (basename (dirname (dirname (dirname (which python)))))
+
+    if begin; [ "$VIRTUAL_ENV" ]; or [ "$name" != 'python' ]; end
+        # set name (basename -- "$VIRTUAL_ENV")
+
         echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $name $dark ")" $normal $bgcolor " "
+    # else if [ "$ACTIVE_PY_ENV" ]
+    #     set name (basename -- "$ACTIVE_PY_ENV")
+    #     echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $name $dark ")" $normal $bgcolor " "
     end
 end
 
@@ -124,7 +130,7 @@ function fish_prompt
     echo -n -s -- \
         $red"➜ " \
         (_dir_status) \
-        (_dotenv_status) \
+        # (_dotenv_status) \
         (_venv_status) \
         (_git_status) \
         $dark"#"$normal" "

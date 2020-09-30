@@ -1,7 +1,8 @@
 function current_city
-    set pubip (ip)
-	set geoip (geoiplookup "$pubip")
-    set city (echo "$geoip" | tail -1 | regex 's/.*?: .*?, .., .*?, //g' | regex 's/, .*$//g' | replace 'GeoIP City Edition' '')
-    set country (echo "$geoip" | head -1 | regex 's/.*Country Edition: (.+?), .+$/$1/gm')
-    echo "$city, $country"
+	set geoip (geoiplookup (ip))
+    set country (echo "$geoip" | grep "Country Edition")
+    set city (echo "$geoip" | grep "City Edition")
+    set country_code (echo "$geoip" | head -1 | perl -pe 's/^GeoIP Country Edition: (?<country_code>.+?), (?<country>.+?)$/$+{country_code}/')
+    set city_name (echo "$geoip" | tail -1 | geoiplookup (ip) | tail -1 | perl -pe 's/^GeoIP City Edition, (?<rev>.+): (?<cc>.+), (?<state_code>.+), (?<state>.+), (?<city>.+), (?<zip>.+), (?<lat>.+), (?<lng>.+), .+, .+$/$+{city}/')
+    echo (echo "$city_name" | replace 'N/A' 'Unknown'), (echo "$country_code" | replace 'N/A' 'Unknown')
 end

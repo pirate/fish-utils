@@ -1,4 +1,4 @@
 function pan
-	cd /opt/panacea/panacea-django
+	cd /opt/syncroplicity.panacea/panacea-django
     source ../.venv/bin/activate.fish
 end
