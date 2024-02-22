@@ -1,3 +1,7 @@
 function ccat
-	pygmentize -g < $argv
+	if count $argv >/dev/null
+		pygmentize -g < $argv
+	else
+		pygmentize -g
+	end
 end

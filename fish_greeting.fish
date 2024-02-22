@@ -16,9 +16,9 @@ function fish_greeting
     echo ": "$red(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | xargs)$normal
     fortune -a -s | cowsay | lolcat
     
-    if test -e ~/.fishpowerline                         # start powerline by detecting the powerline flag file
-        rm ~/.fishpowerline
-        set fish_function_path $fish_function_path ". /usr/local/lib/python2.7/site-packages/powerline/bindings/fish"
-        powerline-setup
-    end
+    # if test -e ~/.fishpowerline                         # start powerline by detecting the powerline flag file
+    #     rm ~/.fishpowerline
+    #     set fish_function_path $fish_function_path ". /usr/local/lib/python2.7/site-packages/powerline/bindings/fish"
+    #     powerline-setup
+    # end
 end

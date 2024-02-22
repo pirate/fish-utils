@@ -24,7 +24,7 @@ function _venv_status
 
     set name (basename (dirname (dirname (dirname (which python)))))
 
-    if begin; [ "$VIRTUAL_ENV" ]; or [ "$name" != 'python' ]; end
+    if begin; [ "$VIRTUAL_ENV" ]; and [ "$name" != 'usr' ]; and [ "$name" != 'python' ]; end
         # set name (basename -- "$VIRTUAL_ENV")
 
         echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $name $dark ")" $normal $bgcolor " "
@@ -119,7 +119,7 @@ function fish_prompt
 
     # set start (gdate +%s%3N)
 
-    set -gx GIT_BRANCH (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+    set -gx GIT_BRANCH (git symbolic-ref HEAD 2>/dev/null | sed -e 's|^refs/heads/||')
 
     _log_last_status
     _print_last_status

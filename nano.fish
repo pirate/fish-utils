@@ -1,3 +1,3 @@
 function nano
-	/usr/local/bin/nano $argv
+	/opt/homebrew/bin/nano $argv
 end

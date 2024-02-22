@@ -1,3 +1,0 @@
-function bat
-	battery
-end

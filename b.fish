@@ -1,3 +1,3 @@
 function b
-	blitzka $argv
+broot -w -s -P -h -g -d $argv
 end
