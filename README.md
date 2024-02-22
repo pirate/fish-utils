@@ -42,6 +42,8 @@ For a huge list of all my favorite Linux/Unix/macOS commands and utilities, see 
 - https://github.com/oh-my-fish/oh-my-fish
 - https://github.com/danhper/fundle
 - https://github.com/IlanCosman/scuba
+- https://github.com/xtendo-org/chips
+- https://github.com/airhorns/hook
 
 ---
 
