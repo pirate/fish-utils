@@ -19,6 +19,7 @@ For a huge list of all my favorite Linux/Unix/macOS commands and utilities, see 
 - ⭐️ https://github.com/topics/fish-plugin
 - https://github.com/jorgebucaran/awsm.fish
 - https://github.com/xuxiaodong/awesome-shell
+- https://github.com/withfig/fig
 
 ### Favorite Plugins
 
@@ -27,7 +28,7 @@ For a huge list of all my favorite Linux/Unix/macOS commands and utilities, see 
 - ⭐️ https://github.com/wting/autojump / https://github.com/jethrokuan/z
 - https://github.com/PatrickF1/fzf.fish
 - https://github.com/jorgebucaran/nvm.fish
-- https://github.com/jorgebucaran/replay.fish
+- https://github.com/jorgebucaran/replay.fish / https://github.com/edc/bass
 - https://github.com/jorgebucaran/autopair.fish / https://github.com/laughedelic/pisces
 - https://github.com/decors/fish-colored-man / https://github.com/PatrickF1/colored_man_pages.fish
 - https://github.com/ankitsumitg/docker-fish-completions / https://github.com/halostatue/fish-docker
