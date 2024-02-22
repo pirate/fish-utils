@@ -5,29 +5,29 @@ function _dir_status
     echo -n -s $color $pwd " "
 end
 
-function _dotenv_status
+function _docker_status
     set bgcolor (set_color '198e4c')
     set fgcolor (set_color '198e4c')
-    set symbol "❖"
+    # set scolor (set_color '1877e2')
+    set symbol "⚃"
 
-    if [ "$ACTIVE_DOT_ENV" ]
-        set path (dirname -- "$ACTIVE_DOT_ENV" | perl -pe "s/\/Users\/$USER/~/g")
-        set name (basename "$path")
-        echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $name $dark ")" $normal $bgcolor " "
+    if [ "$ACTIVE_DOCKER_ENV" ]
+        # set path (echo "$ACTIVE_DOCKER_ENV" | perl -pe "s/\/Users\/$USER/~/g")
+        # set name (basename "$path")
+        # echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $name$dark:$scolor$num_services $dark ")" $normal $bgcolor " "
+        # set num_services (docker compose ps --services | wc -l | xargs)
+        echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $ACTIVE_DOCKER_SERVICES $dark ")" $normal $bgcolor " "
     end
 end
 
 function _venv_status
     set bgcolor (set_color 'ffa632')
     set fgcolor (set_color 'ffa632')
-    set symbol "⨈"
+    set vcolor (set_color '1877e2')
+    set symbol "⍴"
 
-    set name (basename (dirname (dirname (dirname (which python)))))
-
-    if begin; [ "$VIRTUAL_ENV" ]; and [ "$name" != 'usr' ]; and [ "$name" != 'python' ]; end
-        # set name (basename -- "$VIRTUAL_ENV")
-
-        echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $name $dark ")" $normal $bgcolor " "
+    if begin; [ "$ACTIVE_PY_NAME" ]; and [ "$ACTIVE_PY_NAME" != 'usr' ]; and [ "$ACTIVE_PY_NAME" != 'python' ]; end
+        echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $ACTIVE_PY_NAME$dark:$vcolor$ACTIVE_PY_VERSION $dark ")" $normal $bgcolor " "
     # else if [ "$ACTIVE_PY_ENV" ]
     #     set name (basename -- "$ACTIVE_PY_ENV")
     #     echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $name $dark ")" $normal $bgcolor " "
@@ -36,12 +36,14 @@ end
 
 function _node_status
     set bgcolor (set_color '709825')
-    set fgcolor (set_color '709825')
+    set fgcolor (set_color brmagenta)
+    set vcolor (set_color '1877e2')
     set symbol "⬢"
+    # set symbol "№"
 
     if [ "$ACTIVE_JS_ENV" ]
-        set name "$ACTIVE_JS_PACKAGE"
-        echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $name $dark ")" $normal $bgcolor " "
+        # echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $npm_pkgname$dark:$vcolor$npm_version $dark ")" $normal $bgcolor " "
+        echo -n -s $bgcolor $symbol $dark "(" $normal$fgcolor$ACTIVE_NPM_VERSION$dark:$vcolor$ACTIVE_NODE_VERSION $dark ")" $normal $bgcolor " "
     end
 end
 
@@ -125,14 +127,18 @@ function fish_prompt
     _print_last_status
     _blink_last_status
 
-
+    # run automatically by cd function:
+    # activate_docker_env
+    # activate_py_env
+    # activate_js_env
 
     echo -n -s -- \
         $red"➜ " \
-        (_dir_status) \
-        # (_dotenv_status) \
         (_venv_status) \
+        (_node_status) \
+        (_docker_status) \
         (_git_status) \
+        (_dir_status) \
         $dark"#"$normal" "
 
     # set end (gdate +%s%3N)

@@ -1,13 +1,13 @@
 function load_js_env -a path
-    if test -n "$path"
+    set abspath (greadlink -f -- "$path")
+    if begin; test -n "$path"; and greadlink -f -- "$PWD" | grep -q "^$abspath"; end
         debug "Loading '$path' js env..." $green
-        set abspath (greadlink -f -- "$path")
         set -gx ACTIVE_JS_ENV "$abspath"
         and set -gx ACTIVE_JS_PACKAGE (node -pe "require('$path/package.json').name")
         and set -gx ACTIVE_NODE_BIN (which node)
-        and set -gx ACTIVE_NODE_VERSION (node --version)
+        and set -gx ACTIVE_NODE_VERSION (node --version | perl -pe 's/^v(\d+\.\d+)(\..+)?/$1/gm')
         and set -gx ACTIVE_NPM_BIN (which npm)
-        and set -gx ACTIVE_NPM_VERSION (eval "$ACTIVE_NPM_BIN --version")
+        and set -gx ACTIVE_NPM_VERSION (jq -r '.version' "$ACTIVE_JS_ENV/package.json")
         and set -gx ACTIVE_YARN_BIN (which yarn)
         and set -gx ACTIVE_YARN_VERSION (eval "$ACTIVE_YARN_BIN --version")
         return $status
@@ -40,7 +40,7 @@ end
 
 function activate_js_env -a path --description 'Load a python virtual environment'
     print_js_env
-    test -n "$path"; or set path (findabove "package.json" "$PWD" "$MAXHOPS")
-    print_js_env "$path"
+    test -n "$path"; or set path (findabove "package.json" "$PWD" "$MAXHOPS" | perl -pe 's/\/package.json//gm')
+    load_js_env "$path"
     print_js_env
 end

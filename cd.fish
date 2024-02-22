@@ -25,6 +25,10 @@ function cd --description 'Change directory'
         set -g dirprev $dirprev $previous
         set -e dirnext
         set -g __fish_cd_direction prev
+
+        activate_docker_env
+        activate_py_env
+        activate_js_env
     end
 
     return $cd_status
