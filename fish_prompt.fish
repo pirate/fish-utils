@@ -28,6 +28,7 @@ function _venv_status
 
     if begin; [ "$ACTIVE_PY_NAME" ]; and [ "$ACTIVE_PY_NAME" != 'usr' ]; and [ "$ACTIVE_PY_NAME" != 'python' ]; end
         echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $ACTIVE_PY_NAME$dark:$vcolor$ACTIVE_PY_VERSION $dark ")" $normal $bgcolor " "
+
     # else if [ "$ACTIVE_PY_ENV" ]
     #     set name (basename -- "$ACTIVE_PY_ENV")
     #     echo -n -s $bgcolor $symbol $dark "(" $normal $fgcolor $name $dark ")" $normal $bgcolor " "
